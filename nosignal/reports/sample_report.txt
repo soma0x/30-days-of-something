@@ -1,0 +1,31 @@
+=== AUTHWATCH SECURITY REPORT ===
+Source: /mnt/data/authwatch/sample_logs/auth.log
+Failed authentication events: 14
+Successful authentication events parsed: 1
+
+Top source IPs:
+  203.0.113.10       11 failures
+  198.51.100.22      3 failures
+
+Top targeted usernames:
+  admin              6 failures
+  root               2 failures
+  ubuntu             2 failures
+  test               2 failures
+  deploy             2 failures
+
+Findings: 4
+  [HIGH] HIGH_FAILURE_VOLUME
+      Source: 203.0.113.10
+      Evidence: 11 failed authentication attempts from one source
+  [HIGH] AUTH_BURST
+      Source: 203.0.113.10
+      Evidence: 11 failures within 10 minutes; 5 user(s) targeted
+  [MEDIUM] MULTI_ACCOUNT_TARGETING
+      Source: 203.0.113.10
+      Evidence: 5 distinct usernames targeted
+  [HIGH] FAILURES_THEN_SUCCESS
+      Source: 198.51.100.22
+      Evidence: 3 failures for user 'admin' followed by a successful authentication
+
+NOTE: Findings are indicators for investigation, not proof of compromise.
